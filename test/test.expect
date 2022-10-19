@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+
+spawn /bin/bash
+
+send "source src/gelines.sh\r"
+
+send "getline\r"
+send "first\r"
+send "second\r"
+send "third\r"
+send "\r"
+send "echo \$REPLY\r"
+expect "first\r"
+expect "second\r"
+expect "third\r"
