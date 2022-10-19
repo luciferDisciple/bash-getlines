@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ -z "$(command -v shunit2)" ]]; then
+	echo "You don't have 'shunit2' in your PATH."
+	exit 1
+fi
+
+for test_script in test/*.sh; do
+	bash "$test_script"
+done
