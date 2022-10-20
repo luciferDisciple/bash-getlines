@@ -39,5 +39,5 @@ function readlines {
 	done
 	declare -ga $out_var_name
 	local -n ref=$out_var_name
-	ref+=("${lines[@]}")
+	ref=("${lines[@]}")
 }

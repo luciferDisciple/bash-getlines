@@ -26,6 +26,14 @@ test_option_e_requires_argument() {
 	assertEquals 'readlines: --sentinel: option requires an argument' "$output"
 }
 
+test_option_e_changes_sentinel_line() {
+	readlines --sentinel END <<<$'can enter empty line:\n\nempty line above\nEND\n'
+	assertEquals 'can enter empty line:' "${REPLY[0]}"
+	assertEquals ''                      "${REPLY[1]}"
+	assertEquals 'empty line above'      "${REPLY[2]}"
+	assertEquals 3 ${#REPLY[@]}
+}
+
 test_invalid_options_are_not_allowed() {
 	local output="$(readlines -p '>>> ' -X)"
 	assertEquals 'readlines: -X: invalid option' "$output"
