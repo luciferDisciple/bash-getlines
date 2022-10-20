@@ -5,7 +5,7 @@ function getlines {
 	local prompt="$2"
 	local sentinel="$3"
 	local lines
-	while { printf "$prompt"; read line; }; do
+	while { echo -n "$prompt"; read line; }; do
 		[[ "$line" = "$sentinel" ]] && break
 		lines+="$line"$'\n'
 	done
